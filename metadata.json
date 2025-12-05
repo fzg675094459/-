@@ -1,0 +1,7 @@
+{
+  "name": "The Old Talisman (古符)",
+  "description": "A mobile-first atmospheric Chinese horror experience. Explore an abandoned ancestral hall, solve the seal puzzle, and uncover the truth.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
