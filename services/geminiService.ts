@@ -1,14 +1,9 @@
-
 import { GoogleGenAI } from "@google/genai";
 import { FALLBACK_DIARY, FALLBACK_BLOOD_MSG } from "../constants";
 
 export const generateStoryContent = async (type: 'diary' | 'blood'): Promise<string> => {
-  if (!process.env.API_KEY) {
-    console.warn("No API_KEY found, using fallback.");
-    return type === 'diary' ? FALLBACK_DIARY : FALLBACK_BLOOD_MSG;
-  }
-
   try {
+    // The API key must be obtained exclusively from the environment variable process.env.API_KEY
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     
     let prompt = "";
@@ -22,7 +17,6 @@ export const generateStoryContent = async (type: 'diary' | 'blood'): Promise<str
       model: "gemini-2.5-flash",
       contents: prompt,
       config: {
-        maxOutputTokens: 600,
         temperature: 1.2,
         responseMimeType: "text/plain",
       },
